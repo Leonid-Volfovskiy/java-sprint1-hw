@@ -1,12 +1,11 @@
 public class Converter {
-    private final double stepInKcal = 0.005;
-    private final double stepInKm = 0.00075;
+    private final double STEP_IN_KM = 0.00075;
+    private final double STEP_IN_CAL = 0.05;
 
     public double convertStepToKm(int monthSumSteps){
-        return monthSumSteps * stepInKm;
+        return monthSumSteps * STEP_IN_KM;
     }
-
     public double convertStepToKcal(int monthSumSteps){
-        return monthSumSteps * stepInKcal;
+        return monthSumSteps * STEP_IN_CAL;
     }
 }

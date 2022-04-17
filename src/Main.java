@@ -3,25 +3,29 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        StepTracker stepTracker = new StepTracker();
+        StepTracker stepTracker = new StepTracker(scanner);
 
-        printMenu();
-        int userInput = scanner.nextInt();
-
-        while (userInput != 0) {
-            if (userInput == 1) { // отработка ввода 3 варианта
-                stepTracker.saveSteps();
-            } else if (userInput == 2) {
-                stepTracker.getMonthStatistic();
-            } else if (userInput == 3) {
-                stepTracker.setNewGoal();
-            } else {
-                System.out.println("Извините, такой команды пока нет.");
+        while (true) {
+            printMenu();
+            int userInput = scanner.nextInt();
+            switch (userInput) {
+                case 0:
+                    System.out.println("Программа завершена");
+                    return;
+                case 1:
+                    stepTracker.saveSteps();
+                    break;
+                case 2:
+                    stepTracker.getMonthStatistic();
+                    break;
+                case 3:
+                    stepTracker.setNewGoal();
+                    break;
+                default:
+                    System.out.println("Извините, такой команды пока нет.");
+                    break;
             }
-            printMenu(); // печатем меню ещё раз перед завершением предыдущего действия
-            userInput = scanner.nextInt(); // повторное считывание данных от пользователя
         }
-        System.out.println("Программа завершена");
     }
 
     private static void printMenu() {
